@@ -19,6 +19,7 @@ var (
 	proto         = "https"
 	redisAddr     = "localhost:6379"
 	redisPassword = ""
+	redisNumDB       = "0"
 )
 
 func init() {
@@ -29,6 +30,7 @@ func init() {
 	flag.StringVar(&proto, "proto", proto, "protocol of the server")
 	flag.StringVar(&redisAddr, "conn", redisAddr, "address of the redis server")
 	flag.StringVar(&redisPassword, "password", redisPassword, "password of the redis server")
+	flag.StringVar(&redisNumDB, "redisDB", redisNumDB, "password of the redis server")
 }
 
 func main() {
@@ -47,7 +49,7 @@ func main() {
 	initRedisClient(&redis.Options{
 		Addr:     redisAddr,
 		Password: redisPassword,
-		DB:       0,
+		DB:       redisNumDB,
 	})
 
 	ctx := context.Background()
@@ -68,23 +70,34 @@ func main() {
 	run()
 }
 
+// parseEnvirons 函数用于解析环境变量
 func parseEnvirons() {
+    // 如果 MYURLS_PORT 环境变量存在，则将其值赋给 port
 	if p := os.Getenv("MYURLS_PORT"); p != "" {
 		port = p
 	}
+    // 如果 MYURLS_DOMAIN 环境变量存在，则将其值赋给 domain
 	if d := os.Getenv("MYURLS_DOMAIN"); d != "" {
 		domain = d
 	}
+    // 如果 MYURLS_PROTO 环境变量存在，则将其值赋给 proto
 	if p := os.Getenv("MYURLS_PROTO"); p != "" {
 		proto = p
 	}
+    // 如果 MYURLS_REDIS_CONN 环境变量存在，则将其值赋给 redisAddr
 	if c := os.Getenv("MYURLS_REDIS_CONN"); c != "" {
 		redisAddr = c
 	}
+    // 如果 MYURLS_REDIS_PASSWORD 环境变量存在，则将其值赋给 redisPassword
 	if p := os.Getenv("MYURLS_REDIS_PASSWORD"); p != "" {
 		redisPassword = p
 	}
+    // 如果 MYURLS_REDIS_DB 环境变量存在，则将其值赋给 redisNumDB
+	if db := os.Getenv("MYURLS_REDIS_DB"); p != "" {
+		redisNumDB = db
+	}
 }
+
 
 func run() {
 	// init and run server
