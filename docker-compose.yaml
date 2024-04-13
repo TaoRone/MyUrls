@@ -9,15 +9,4 @@ services:
       - "${MYURLS_PORT}:${MYURLS_PORT}"
     volumes:
       - ./data/myurls/logs:/app/logs      
-    depends_on:
-      - myurls-redis
-    entrypoint: ["/app/myurls", "-domain", "${MYURLS_DOMAIN}", "-conn", myurls-redis:6379]
-
-  myurls-redis:
-    image: "redis:7"
-    container_name: myurls-redis
-    restart: always
-    volumes:
-      - ./data/redis:/data
-    expose:
-      - "6379"
+    entrypoint: ["/app/myurls", "-domain", "${MYURLS_DOMAIN}", "-conn", "${MYURLS_REDIS_CONN}", "-password", "${MYURLS_REDIS_PASSWORD}"]
