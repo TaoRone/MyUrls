@@ -90,6 +90,12 @@ docker-compose up -d
 # 或者 docker-compose -f docker-compose_origin.yaml up -d
 ```
 
+### 如果想要清理编译过程中产生不需要的文件
+```
+docker system prune -a --volumes
+```
+
+
 ### 使用docker CLI（不支持修改redis数据库DB号）
 这个镜像这里列举的是原版提供的，因此不能修改reids的DB号
 ```
