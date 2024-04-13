@@ -24,6 +24,13 @@ AMH面板（宝塔类似）
 ### AMH面板操作
 1. AMH面板上“缓存应用”中安装Reids和phpRedisAdmin
 2. 点击面板的Reids配置，软件版本选择你的redis，设置监听地址不限制，视情况而定修改监听端口，【推荐】设置一个密码
+3. 【参考】通过lngx创建站点，AMHSSL申请域名，申请后设置站点conf文件跨域：
+   ```
+    cd /home/wwwroot/Lngx环境/vhost/
+    找到你的配置文件，https也需要
+    添加 add_header 'Access-Control-Allow-Origin' '*';
+    位置：location / {} 内的最后
+    ```
 
 ### 命令行安装版
 执行以下命令，详细端口、密码修改自行问AI或者google
@@ -37,11 +44,7 @@ sudo apt-get install redis-server -y
 ```
 
 ## Docker 操作
-### 使用docker CLI（不支持修改redis数据库DB号）
-这个镜像这里列举的是原版提供的，因此不能修改reids的DB号
-```
-docker run -d --restart always --name myurls careywong/myurls:latest -domain example.com -port 8002 -conn 127.0.0.1:6379 -password ''
-```
+
 ### 使用docker-compose
 [安装docker-compose](https://docs.docker.com/compose/install/)
 ```shell script
@@ -85,6 +88,12 @@ MYURLS_REDIS_PASSWORD=a12345 # 你的Redis数据库密码
 docker-compose down
 docker-compose up -d
 # 或者 docker-compose -f docker-compose_origin.yaml up -d
+```
+
+### 使用docker CLI（不支持修改redis数据库DB号）
+这个镜像这里列举的是原版提供的，因此不能修改reids的DB号
+```
+docker run -d --restart always --name myurls careywong/myurls:latest -domain example.com -port 8002 -conn 127.0.0.1:6379 -password ''
 ```
 
 # Install直接安装
