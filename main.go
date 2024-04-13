@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/redis/go-redis/v9"
@@ -45,12 +46,16 @@ func main() {
 
 	InitLogger()
 
-	// init and check redis
-	initRedisClient(&redis.Options{
-		Addr:     redisAddr,
-		Password: redisPassword,
-		DB:       redisNumDB,
-	})
+// init and check redis
+numDB, err := strconv.Atoi(redisNumDB)
+if err != nil {
+    log.Fatalf("Failed to convert redisNumDB to integer: %v", err)
+}
+initRedisClient(&redis.Options{
+    Addr:     redisAddr,
+    Password: redisPassword,
+    DB:       numDB,
+})
 
 	ctx := context.Background()
 	rc := GetRedisClient()
