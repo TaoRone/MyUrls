@@ -17,13 +17,13 @@
 - Install直接安装
 
 # # Docker方式部署
-## ## Dependencies
+## ## Dependencies安装Ridis
 本服务依赖于 Redis 提供长短链接映射关系存储，你需要本地安装 Redis 服务来保证短链接服务的正常运行。
-现提供以下两个方式实现redis的部署：
+现提供以下两个方式实现redis的部署，你也可以使用其他地方部署到远程redis：
 AMH面板（宝塔类似）
 命令行安装
 
-### ### AMH面板操作
+### ### AMH面板部署Redis
 1. AMH面板上“缓存应用”中安装Reids和phpRedisAdmin
 2. 点击面板的Reids配置，软件版本选择你的redis，设置监听地址不限制，视情况而定修改监听端口，【推荐】设置一个密码
 3. 【参考】通过lngx创建站点，AMHSSL申请域名，申请后设置站点conf文件跨域：
@@ -34,7 +34,7 @@ AMH面板（宝塔类似）
     位置：location / {} 内的最后
     ```
 
-### ### 命令行安装版
+### ### 命令行安装部署Redis
 执行以下命令，详细端口、密码修改自行问AI或者google
 ```shell script
 sudo apt-get update
