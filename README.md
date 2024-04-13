@@ -3,11 +3,12 @@
 本项目简单修改自大佬的项目，License应归属原项目作者： MIT © 2024 CareyWang
 [原项目](https://github.com/CareyWang/MyUrls)
 - 修改内容：
-1. 修改了docker-compose.yaml文件，可以直接修改env文件使用现有redis
+1. 修改了docker-compose.yaml文件，可以直接修改env文件使用已部署的和远程的redis
 2. 新增了docker-compose_origin.yaml，如果没有自己部署redis，依然可以通过此yaml文件实现依赖于redisdocker的自部署
 3. 增加了对redis数据库(默认DB：0)的选择，使用docker-compose.yaml方式部署可以设置
 4. 增加了对AMH面板使用时的操作方法
-5. .env文件的修改
+5. .env文件的配置修改
+6. mian.go对应修改，增加了转换和日志的依赖
 > 基于 Go 1.22 与 Redis 实现的本地短链接服务，用于缩短 URL 与短链接还原。
 
 # # 目录
