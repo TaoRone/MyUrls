@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"log"
 
 	"github.com/gin-gonic/gin"
 	"github.com/redis/go-redis/v9"
