@@ -9,4 +9,4 @@ services:
       - "${MYURLS_PORT}:${MYURLS_PORT}"
     volumes:
       - ./data/myurls/logs:/app/logs      
-    entrypoint: ["/app/myurls", "-domain", "${MYURLS_DOMAIN}", "-conn", "${MYURLS_REDIS_CONN}", "-password", "${MYURLS_REDIS_PASSWORD},"-redisDB",${MYURLS_REDIS_DB}]
+    entrypoint: ["/app/myurls", "-domain", "${MYURLS_DOMAIN}", "-conn", "${MYURLS_REDIS_CONN}", "-password", "${MYURLS_REDIS_PASSWORD}", "-redisDB", "${MYURLS_REDIS_DB}"]
