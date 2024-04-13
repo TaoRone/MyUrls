@@ -19,7 +19,7 @@ var (
 	proto         = "https"
 	redisAddr     = "localhost:6379"
 	redisPassword = ""
-	redisNumDB       = "0"
+	redisNumDB    = "0"
 )
 
 func init() {
@@ -93,7 +93,7 @@ func parseEnvirons() {
 		redisPassword = p
 	}
     // 如果 MYURLS_REDIS_DB 环境变量存在，则将其值赋给 redisNumDB
-	if db := os.Getenv("MYURLS_REDIS_DB"); p != "" {
+	if db := os.Getenv("MYURLS_REDIS_DB"); db != "" {
 		redisNumDB = db
 	}
 }
