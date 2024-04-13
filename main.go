@@ -30,7 +30,7 @@ func init() {
 	flag.StringVar(&proto, "proto", proto, "protocol of the server")
 	flag.StringVar(&redisAddr, "conn", redisAddr, "address of the redis server")
 	flag.StringVar(&redisPassword, "password", redisPassword, "password of the redis server")
-	flag.StringVar(&redisNumDB, "redisDB", redisNumDB, "password of the redis server")
+	flag.StringVar(&redisNumDB, "redisDB", redisNumDB, "DB of the redis server")
 }
 
 func main() {
